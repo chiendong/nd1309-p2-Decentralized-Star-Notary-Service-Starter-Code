@@ -22,9 +22,8 @@
  *
  */
 
-const HDWallet = require('truffle-hdwallet-provider');
-// const HDWallet = require('@truffle/hdwallet-provider');
-const infuraKey = "0326574e35af4a81bc81c15790e69441";
+// const HDWallet = require('truffle-hdwallet-provider');
+const HDWallet = require('@truffle/hdwallet-provider');
 //
 const fs = require('fs');
 const mnemonic = fs.readFileSync(".secret").toString().trim();
@@ -49,7 +48,7 @@ module.exports = {
     //
     development: {
       host: "127.0.0.1",     // Localhost (default: none)
-      port: 9545,            // Standard Ethereum port (default: none)
+      port: 7545,            // Standard Ethereum port (default: none)
       network_id: "*",       // Any network (default: none)
     },
 
@@ -73,10 +72,11 @@ module.exports = {
       // timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
       // skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
     // },
-    goerli: {
-      provider: () => new HDWallet(mnemonic, `https://goerli.infura.io/v3/${infuraKey}`),
-      network_id: 5, //Goerli's id
-      gas: 5000000, //gas limit      
+    sepolia: {
+      provider: () => new HDWallet(mnemonic, `https://sepolia.infura.io/v3/0326574e35af4a81bc81c15790e69441`),
+      network_id: 11155111, // Sepolia's network ID
+      gas: 4000000, // Adjust the gas limit as per your requirements
+      gasPrice: 21593412285, // Set the gas price to an appropriate value                
      },
 
     // Useful for private networks
